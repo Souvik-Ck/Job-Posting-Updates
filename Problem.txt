@@ -10,15 +10,16 @@ current job applicants and internal stakeholders. However, our current process i
 •Lack of Visibility: Internal teams, especially hiring managers, are not always aware of position modifications, which can affect their recruitment strategies
 and coordination.
 
+
 We need a solution to automate the following actions whenever a Position record is updated:
 
 
-1. 2. 3. Loosely Coupled Architecture : Based on the same event , we should be able to add additional subscribers to the Job update event.
-
-Notify Job Applicants: Automatically send notifications to all applicants associated with the updated Position, informing them about the specific changes made.
-
-Maintain an Update Log: Create a detailed log record capturing:
-
+1. Loosely Coupled Architecture : 
+Based on the same event , we should be able to add additional subscribers to the Job update event.
+2. Notify Job Applicants: 
+Automatically send notifications to all applicants associated with the updated Position, informing them about the specific changes made.
+3.Maintain an Update Log: 
+Create a detailed log record capturing:
  Which fields in the Position were updated
  The user who made the changes
  Date and time of the update
@@ -27,18 +28,17 @@ This automation will ensure timely communication, improve transparency, and stre
 
 
 
-Functional Requirements• 
+Functional Requirements 
 Real-time Updates: The system must trigger notifications and create log entries immediately after a Position record is updated.
-
-• Accuracy: The notifications and log entries must accurately reflect the specific fields that were modified in the Position.
-
-• Targeted Communication: Notifications should only be sent to applicants linked to the updated Position.
+Accuracy: The notifications and log entries must accurately reflect the specific fields that were modified in the Position.
+Targeted Communication: Notifications should only be sent to applicants linked to the updated Position.
 
 
 
 Technical Requirements
 
-• Platform Event on Position Object: A platform event should broadcast the changes per record. These broadcasts are to be subscribed by subscribers
+• Platform Event on Position Object: 
+A platform event should broadcast the changes per record. These broadcasts are to be subscribed by subscribers
 (Event Triggered Flow / Apex Trigger on Position - Platform event).
 
 • Subtasks via Flows/Triggers:
@@ -52,14 +52,9 @@ Subtask 2: A (subscriber) another Flow or trigger should create the log record o
 Additional Considerations
 
 • Notification Content: The notification template should be customizable to include relevant details about the Position update.
-
 • Error Handling: The system should include error handling mechanisms to ensure notifications and log entries are created successfully even if there are
 issues with specific records or data.
-
 • Security: Access to the update log should be restricted to authorized personnel.
 
 
 
-Follow all other Standards and Guidelines mentioned in the Cloudkaptan Standards and
-
-Coding Guidelines.
