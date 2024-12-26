@@ -1,0 +1,51 @@
+The current manual process for updating Position details leads to delays in communication and lack of visibility, creating inefficiencies for applicants and internal stakeholders. 
+To address this, the company requires an automated, scalable, and secure system to:
+
+Notify job applicants of updates in real-time.
+Log changes for internal visibility.
+Ensure a loosely coupled architecture for easy extensibility.
+
+
+
+
+Proposed Solution
+We recommend implementing a solution based on Platform Events and Event-Driven Architecture, which ensures real-time updates, flexibility, and modularity.
+
+
+
+Solution Components
+1. Platform Event for Position Updates
+Create a Position Update Platform Event that captures changes made to Position records.
+This event serves as the central hub for broadcasting updates, ensuring a loosely coupled architecture. New subscribers can be added without altering the existing system.
+2. Event Subscribers
+Two primary subscribers handle the automation tasks:
+
+Notification Subscriber (Flow/Trigger):
+Listens to the platform event and sends notifications to associated applicants.
+Uses customizable templates for targeted communication, including:
+Updated fields
+Reason for update (if available)
+Position details
+Logging Subscriber (Flow/Trigger):
+Creates a detailed log record capturing:
+Updated fields
+User who made the change
+Timestamp of the update
+
+3. Field Tracking for Accurate Logs
+Enable Field History Tracking on the Position object for critical fields (e.g., job description, required skills).
+Use this tracking data to generate detailed logs.
+
+4. Notification Mechanism
+Use Email Alerts or Push Notifications (depending on the applicant's preference) for sending updates.
+Ensure content customization via a Notification Template Management System.
+
+5. Error Handling
+Implement robust error-handling mechanisms:
+Use Retry Mechanisms for failed notifications or log entries.
+Log errors in a separate Error Log Object for review and resolution.
+6. Security
+Restrict access to:
+Update logs: Ensure only authorized personnel can view them.
+Notifications: Ensure sensitive applicant data is protected.
+Use platform security features (e.g., Field-Level Security, Permission Sets) to enforce access control.
