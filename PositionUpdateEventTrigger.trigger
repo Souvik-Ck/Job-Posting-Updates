@@ -1,12 +1,13 @@
-**
-* @description       :
-* @author            : Souvik Sen
-* @group             :
-* @last modified on  : 12-31-2024
-* @last modified by  : Souvik Sen
+/**
+ * @description       : 
+ * @author            : Souvik Sen
+ * @group             : 
+ * @last modified on  : 01-02-2025
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
+
 trigger PositionUpdateEventTrigger on Position_Update__e (after insert) {
-    List<Position_Update__e> logs = new List<Position_Update__e>();
+    List<Position_Update_Log__c> logs = new List<Position_Update_Log__c>();
     
     try {
         Set<Id> positionIds = new Set<Id>();
